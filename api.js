@@ -26,4 +26,11 @@ const getComments = (articleId) => {
     })
 };
 
+const patchArticleVotes = (articleId, inc_votes) => {
+  return api.patch(`/articles/${articleId}`, { inc_votes})
+    .then((response) => {
+      return response.data.article;
+    })
+};
+
 export { getArticles, getArticleById, getComments};
