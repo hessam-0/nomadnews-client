@@ -12,4 +12,12 @@ const getArticles = () => {
     })
 };
 
-export { getArticles };
+const getArticleById = (articleId) => {
+  const url='/articles/' + articleId;
+  return api.get(url)
+    .then((response) => {
+      return response.data.article;
+    })
+};
+
+export { getArticles, getArticleById };

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { getArticles } from "../../api";
-import  ArticleCard  from "./ArticleCard"
+import  ArticleCard  from "./ArticleCard";
 
 export default function ArticleList() {
   const [articles, setArticles ] = useState([]);
@@ -16,13 +16,18 @@ export default function ArticleList() {
         setIsLoading(false);
       })
       .catch((err) => {
-        setError(err)
+        setError(err.response?.data?.msg || err.msg || "Something went wrong!");
         setIsLoading(false)
       });
   }, []);
 
-  if(isLoading) return <p>loading...</p>;
-  if(error) return <p>Error</p>;
+  if(isLoading){
+    return <p>loading...</p>
+  };
+
+  if(error){
+    return <p>Error: {error}</p>
+  };
 
   return (
     <main className="articles-grid">
