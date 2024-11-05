@@ -13,11 +13,17 @@ const getArticles = () => {
 };
 
 const getArticleById = (articleId) => {
-  const url='/articles/' + articleId;
-  return api.get(url)
+  return api.get(`/articles/${articleId}`)
     .then((response) => {
       return response.data.article;
     })
 };
 
-export { getArticles, getArticleById };
+const getComments = (articleId) => {
+  return api.get(`/articles/${articleId}/comments`)
+    .then((response) => {
+      return response.data.comments;
+    })
+};
+
+export { getArticles, getArticleById, getComments};
