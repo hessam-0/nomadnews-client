@@ -33,4 +33,4 @@ const patchArticleVotes = (articleId, inc_votes) => {
     })
 };
 
-export { getArticles, getArticleById, getComments};
+export { getArticles, getArticleById, getComments, patchArticleVotes };
