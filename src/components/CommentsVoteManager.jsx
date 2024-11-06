@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { patchArticleVotes } from "../../api";
+import { patchCommentVotes } from "../../api";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/16/solid";
 
-export default function VoteManager({ article_id, initialVotes }){
+export default function CommentsVoteManager({ comment_id, initialVotes }){
   const [voteModifier, setVoteModifier] = useState(0);
-  const [isVoting, setIsVoting] = useState(false);
   const [error, setError] = useState(null);
+  const [isVoting, setIsVoting] = useState(false);
 
   const toggleUpvote = () => {
     const newModifier = voteModifier === 1 ? 0 : 1;
@@ -14,7 +14,7 @@ export default function VoteManager({ article_id, initialVotes }){
     setIsVoting(true);
     setError(null);
 
-    patchArticleVotes(article_id, voteChange)
+    patchCommentVotes(comment_id, voteChange)
       .then(() => {
         setVoteModifier(newModifier);
         setIsVoting(false);
@@ -32,7 +32,7 @@ export default function VoteManager({ article_id, initialVotes }){
     setIsVoting(true);
     setError(null);
 
-    patchArticleVotes(article_id, voteChange)
+    patchCommentVotes(comment_id, voteChange)
       .then(() => {
         setVoteModifier(newModifier);
         setIsVoting(false);
