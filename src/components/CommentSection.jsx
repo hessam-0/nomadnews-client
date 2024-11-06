@@ -31,7 +31,7 @@ export default function CommentSection({ article_id }) {
 
   return(
     <section className="comment-section">
-        <h2>Comments:({comments.length})</h2>
+        <h2>Comments({comments.length})</h2>
         <CommentList comments={comments}/>
     </section>
   );

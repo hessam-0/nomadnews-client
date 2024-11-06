@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticleById } from "../../api";
 import CommentSection from "./CommentSection";
+import VoteManager from "./VoteManager";
 
 export default function ArticlePage(){
   const { article_id } = useParams();
@@ -40,6 +41,10 @@ export default function ArticlePage(){
               <img
                src={article.article_img_url}
                alt={article.title}
+              />
+              <VoteManager
+                article_id={article.article_id}
+                initialVotes={article.votes}
               />
           </article>
           <CommentSection article_id={article_id}/>
