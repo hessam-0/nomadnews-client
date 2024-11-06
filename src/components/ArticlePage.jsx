@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticleById } from "../../api";
+import CommentSection from "./CommentSection";
 
 export default function ArticlePage(){
   const { article_id } = useParams();
@@ -41,6 +42,7 @@ export default function ArticlePage(){
                alt={article.title}
               />
           </article>
+          <CommentSection article_id={article_id}/>
         </main>
       </div>
     </div>
