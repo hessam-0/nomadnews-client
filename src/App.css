@@ -182,3 +182,41 @@ body {
   height: 12px;
   color: black;
 }
+
+.comment-form {
+  border: 2px solid rgb(51, 255, 0);
+  padding: 1rem;
+  background-color: #999797;
+  margin-bottom: 1rem;
+}
+
+.comment-form textarea {
+  display: block;
+  width: 90%;
+  min-height: 100px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #363636;
+  color: white;
+  border: 2px solid rgb(51, 255, 0);
+}
+
+.comment-form button {
+  padding: 0.5rem 1rem;
+  background-color: #363636;
+  color: white;
+  border: 2px solid rgb(51, 255, 0);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment-form button:hover:not(:disabled) {
+  border-color: blue;
+  transform: translateY(-2.5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.comment-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
