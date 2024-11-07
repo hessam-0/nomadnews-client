@@ -27,12 +27,6 @@ const getComments = (article_id) => {
 };
 
 const patchArticleVotes = (article_id, inc_votes) => {
-
-  // I've put this here to simulate a failure to demonstrate the error.
-    if (Math.random() > 0.8) {
-    return Promise.reject({ msg: "Random voting error." });
-  };
-
   return api.patch(`/articles/${article_id}`, { inc_votes})
     .then((response) => {
       return response.data.article;
@@ -47,23 +41,12 @@ const patchCommentVotes = (comment_id, inc_votes) => {
 };
 
 const postComment = (article_id, username, body) => {
-  const randomDelay = Math.floor(Math.random() * 2000) + 1000; //1000-3000ms
-  const chanceOfFailure = Math.random() < 0.5 // 50%
-
-  if(chanceOfFailure){
-    return Promise.reject({msg: "Random posting Error."});
-  }
-
   return api.post(`/articles/${article_id}/comments`, {
     username,
     body
   })
-  .then((response)=> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(response.data.comment)
-      }, randomDelay);
-    });
+  .then((response) => {
+    return response.data.comment;
   });
 };
 
@@ -73,5 +56,12 @@ const deleteComment = (comment_id) => {
       return response.data.comment;
     });
 };
+
+export const getTopics = () => {
+  return api.get(`/topics`)
+    .then((response) => {
+      return response.data.topics;
+    })
+}
 
 export { getArticles, getArticleById, getComments, patchArticleVotes, patchCommentVotes, postComment, deleteComment };
