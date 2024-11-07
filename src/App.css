@@ -232,3 +232,29 @@ body {
   height: 12px;
   color: black;
 }
+
+.topics-nav {
+  padding: 1rem;
+}
+
+.topics-nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.topics-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  border: 2px solid rgb(51, 255, 0);
+  background-color: #363636;
+  transition: all 0.3s ease;
+}
+
+.topics-nav a:hover {
+  border-color: blue;
+  transform: translateY(-2.5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
