@@ -67,4 +67,11 @@ const postComment = (article_id, username, body) => {
   });
 };
 
-export { getArticles, getArticleById, getComments, patchArticleVotes, patchCommentVotes, postComment };
+const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`)
+    .then((response) => {
+      return response.data.comment;
+    });
+};
+
+export { getArticles, getArticleById, getComments, patchArticleVotes, patchCommentVotes, postComment, deleteComment };
