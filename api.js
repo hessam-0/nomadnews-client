@@ -46,4 +46,25 @@ const patchCommentVotes = (comment_id, inc_votes) => {
     })
 };
 
-export { getArticles, getArticleById, getComments, patchArticleVotes, patchCommentVotes };
+const postComment = (article_id, username, body) => {
+  const randomDelay = Math.floor(Math.random() * 2000) + 1000; //1000-3000ms
+  const chanceOfFailure = Math.random() < 0.5 // 50%
+
+  if(chanceOfFailure){
+    return Promise.reject({msg: "Random posting Error."});
+  }
+
+  return api.post(`/articles/${article_id}/comments`, {
+    username,
+    body
+  })
+  .then((response)=> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(response.data.comment)
+      }, randomDelay);
+    });
+  });
+};
+
+export { getArticles, getArticleById, getComments, patchArticleVotes, patchCommentVotes, postComment };

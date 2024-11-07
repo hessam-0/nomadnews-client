@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react";
 import { getComments } from "../../api";
 import CommentList from "./CommentList";
+import CommentForm from "./CommentForm";
 
 export default function CommentSection({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -21,6 +22,10 @@ export default function CommentSection({ article_id }) {
       });
   }, [article_id]);
 
+  const manageNewComment = (newComment) => {
+    setComments((currentComments) => [newComment, ...currentComments]);
+  };
+
   if(isLoading){
     return <p>Loading...</p>
   };
@@ -32,6 +37,10 @@ export default function CommentSection({ article_id }) {
   return(
     <section className="comment-section">
         <h2>Comments({comments.length})</h2>
+          <CommentForm
+            article_id={article_id}
+            onCommentSubmit={manageNewComment}
+          />
         <CommentList comments={comments}/>
     </section>
   );
