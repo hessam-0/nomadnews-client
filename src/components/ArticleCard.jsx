@@ -12,6 +12,8 @@ export default function ArticleCard({ article }) {
          <p>Topic: {article.topic}</p>
          <p>Author: {article.author}</p>
          <p>Votes: {article.votes}</p>
+         <p>Comments: {article.comment_count}</p>
+         <p>Published: {new Date(article.created_at).toLocaleDateString()}</p>
       </article>
     </Link>
   );

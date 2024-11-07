@@ -258,3 +258,29 @@ body {
   transform: translateY(-2.5px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
+
+.sort-controls {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.sort-controls select {
+  padding: 0.5rem;
+  background-color: #363636;
+  color: white;
+  border: 2px solid rgb(51, 255, 0);
+}
+
+.sort-controls button {
+  padding: 0.5rem;
+  background-color: #363636;
+  border: 2px solid rgb(51, 255, 0);
+}
+
+.sort-controls button svg {
+  width: 16px;
+  height: 16px;
+  color: white;
+}
