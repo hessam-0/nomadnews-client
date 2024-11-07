@@ -10,7 +10,9 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ArticleList/>}/>
+          <Route path="/articles" element={<ArticleList/>}/>
           <Route path="/articles/:article_id" element={<ArticlePage/>}/>
+          <Route path="/topics" element={<ArticleList/>}/>
         </Routes>
       </main>
   );

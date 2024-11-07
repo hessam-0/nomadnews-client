@@ -4,9 +4,8 @@ const api = axios.create({
   baseURL: 'https://nomad-news.onrender.com/api'
 });
 
-const getArticles = () => {
-  const url = '/articles';
-  return api.get(url)
+const getArticles = (topic) => {
+  return api.get('/articles', { params: { topic }})
     .then((response) => {
       return response.data.articles;
     })
