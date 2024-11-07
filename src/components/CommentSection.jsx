@@ -2,6 +2,7 @@ import { useEffect, useState} from "react";
 import { getComments } from "../../api";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
+import { deleteComment } from "../../api";
 
 export default function CommentSection({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -26,6 +27,20 @@ export default function CommentSection({ article_id }) {
     setComments((currentComments) => [newComment, ...currentComments]);
   };
 
+  const manageDeleteComment = (commentId) => {
+    const commentForDeletion = comments.filter(comment => comment.comment_id === commentId);
+    const remainingComments = comments.filter(comments => comments.comment_id !== commentId);
+
+    setComments(remainingComments);
+
+    deleteComment(commentId)
+      .catch((err) => {
+        setError(err.response?.data?.msg || err.msg || "Failed to delete comment.")
+        setComments((currentComments) => [...currentComments, ...commentForDeletion])
+        setIsLoading(false);
+      });
+  };
+
   if(isLoading){
     return <p>Loading...</p>
   };
@@ -41,7 +56,7 @@ export default function CommentSection({ article_id }) {
             article_id={article_id}
             onCommentSubmit={manageNewComment}
           />
-        <CommentList comments={comments}/>
+        <CommentList comments={comments} onCommentDelete={manageDeleteComment}/>
     </section>
   );
 };
