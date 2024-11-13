@@ -1,5 +1,7 @@
 # Nomad News Client
 
+https://nomadnews.netlify.app/
+
 ## Description
 
 Nomad News Client is a React-based web application that provides the user interface for a Reddit-style news forum. It integrates with the Nomad News API to deliver an interface where users can view, vote, and comment on articles.
